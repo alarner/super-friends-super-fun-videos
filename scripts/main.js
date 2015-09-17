@@ -18,10 +18,12 @@ $(document).ready(function() {
         $.get(
             url,
             function(response){
-                console.log(response);
-            },
+
+                response.forEach(function(response, index) {
+                    $superVideos.append("<div>"+response.title+"</div><div>"+response.video+"</div><div>"+response.description+"</div>")
+            }),
             'json'
-        );
+        });
     })
 
     $add.click(function() {
@@ -41,7 +43,7 @@ $(document).ready(function() {
         console.log(newDesc);
 
         $.post(
-            url, 
+            url,
             {
             	title: newTitle,
             	video: newVideo,

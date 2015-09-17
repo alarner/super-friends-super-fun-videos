@@ -17,8 +17,11 @@ $(document).ready(function () {
         $form.hide();
         $superVideos.show();
         $.get(url, function (response) {
-            console.log(response);
-        }, 'json');
+
+            response.forEach(function (response, index) {
+                $superVideos.append("<div>" + response.title + "</div><div>" + response.video + "</div><div>" + response.description + "</div>");
+            }), 'json';
+        });
     });
 
     $add.click(function () {
