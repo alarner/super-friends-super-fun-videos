@@ -15,13 +15,20 @@ $(document).ready(function() {
     $viewVideos.click(function() {
         $form.hide();
         $superVideos.show();
-
+        $.get(
+            url,
+            function(response){
+                console.log(response);
+            },
+            'json'
+        );
     })
 
     $add.click(function() {
         $form.show();
         $superVideos.hide();
     })
+
 
     $form.submit(function(e) {
         e.preventDefault();

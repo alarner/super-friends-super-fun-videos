@@ -1,2 +1,10 @@
 #superVideos {
   display: none; }
+
+nav {
+  border: 1px solid gray;
+  background-color: #333; }
+  nav a {
+    color: white;
+    padding: 2em;
+    display: inline-block; }
