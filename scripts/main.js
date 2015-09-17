@@ -14,6 +14,7 @@ $(document).ready(function() {
 
     $viewVideos.click(function() {
         $form.hide();
+        $superVideos.html(' ');
         $superVideos.show();
         $.get(
             url,
@@ -37,23 +38,25 @@ $(document).ready(function() {
         var newTitle = $title.val();
         var newVideo = $videoEmbed.val();
         var newDesc = $description.val();
-
+        if (newVideo.indexOf('<iframe')=== 0) {
+        	 $.post(
+	            url,
+	            {
+	            	title: newTitle,
+	            	video: newVideo,
+	            	description: newDesc
+	            },
+	            function(response) {
+	            	console.log(response);
+	            },
+	            'json'
+	        )
+        };
         console.log(newTitle);
         console.log(newVideo);
         console.log(newDesc);
 
-        $.post(
-            url,
-            {
-            	title: newTitle,
-            	video: newVideo,
-            	description: newDesc
-            },
-            function(response) {
-            	console.log(response);
-            },
-            'json'
-        )
+       
 
     })
 
