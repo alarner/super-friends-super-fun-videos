@@ -10,6 +10,8 @@ $(document).ready(function() {
     var $videoEmbed = $('#videoEmbed')
     var $add = $('#add');
 
+    var url = 'http://tiyfe.herokuapp.com/collections/sfsfv';
+
     $viewVideos.click(function() {
         $form.hide();
         $superVideos.show();
@@ -17,11 +19,11 @@ $(document).ready(function() {
     })
 
     $add.click(function() {
-    	$form.show();
-    	$superVideos.hide();
+        $form.show();
+        $superVideos.hide();
     })
 
-    $form.submit(function(e){
+    $form.submit(function(e) {
         e.preventDefault();
         var newTitle = $title.val();
         var newVideo = $videoEmbed.val();
@@ -31,6 +33,18 @@ $(document).ready(function() {
         console.log(newVideo);
         console.log(newDesc);
 
+        $.post(
+            url, 
+            {
+            	title: newTitle,
+            	video: newVideo,
+            	description: newDesc
+            },
+            function(response) {
+            	console.log(response);
+            },
+            'json'
+        )
 
     })
 
